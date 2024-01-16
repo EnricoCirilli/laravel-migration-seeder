@@ -29,3 +29,20 @@ return new class extends Migration
         Schema::dropIfExists('trains');
     }
 };
+public function up()
+{
+    Schema::create('trains', function (Blueprint $table) {
+        $table->increments('id');
+        $table->string('azienda');
+        $table->string('stazione_partenza');
+        $table->string('stazione_arrivo');
+        $table->dateTime('orario_partenza');
+        $table->dateTime('orario_arrivo');
+        $table->string('codice_treno');
+        $table->integer('numero_carrozze');
+        $table->boolean('in_orario');
+        $table->boolean('cancellato');
+
+        $table->timestamps();
+    });
+}
